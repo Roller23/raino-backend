@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const hash = require('password-hash');
 const MongoClient = require('mongodb').MongoClient;
-const bodyParser = require('body-parser');
 const moment = require('moment-timezone');
 const rateLimit = require("express-rate-limit");
-const app = require('express')();
+const express = require('express')
+const app = express();
 const http = require('http').Server(app);
 const Mutex = require('async-mutex').Mutex;
 const fetch = require('node-fetch');
@@ -99,8 +99,8 @@ function generateNicknameTag(db, nickname) {
 
   app.use(limiter); // apply to all requests
   
-  app.use(bodyParser.urlencoded({extended: false})); // might need to change to true if file upload is needed
-  app.use(bodyParser.json());
+  app.use(express.urlencoded({extended: true}));
+  app.use(express.json());
   
   const mutex = new Mutex();
   
