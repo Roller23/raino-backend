@@ -243,7 +243,7 @@ function generateNicknameTag(db, nickname) {
     });
     
     socket.on('authenticate', async data => {
-      if (!data || !data.selector) return;
+      if (!data || !data.selector || !data.token) return;
       const user = await db.collection('accounts').findOne({tokenSelector: data.selector});
       if (!user) {
         // unknown token selector
