@@ -14,7 +14,7 @@ const Mutex = require('async-mutex').Mutex;
 const fetch = require('node-fetch');
 const io = require('socket.io')(http, {
   cors: {
-    origin: '*/*',
+    origin: '*',
     methods: ['GET', 'POST']
   }
 });
